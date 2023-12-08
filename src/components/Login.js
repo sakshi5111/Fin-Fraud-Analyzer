@@ -1,42 +1,124 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { checkValidateData } from "../utils/validate";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
+
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+
+  const handleButtonClick = () => {
+    //validate email and password
+
+    const message = checkValidateData(
+      email.current.value,
+      password.current.value
+    );
+    setErrorMessage(message);
+    if (message) return;
+
+    //sign in/ sign up
+    if (!isSignIn) {
+      //sign up
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: "",
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
+    } else {
+      //sign in
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
+    }
+  };
 
   const toggleSignIn = () => {
     setIsSignIn(!isSignIn);
   };
 
   return (
-    <div className="">
-      <img
-        className="w-full absolute"
-        src="https://img.freepik.com/free-vector/abstract-watercolor-pastel-background_87374-139.jpg?w=996&t=st=1698753307~exp=1698753907~hmac=ace1af2071949ca0322fdbe850f144c1f7f2a93671466ade6e7dd700318054e3"
-        alt="img"
-      />
-      <div>
-        <form className="w-4/12 absolute p-12 my-32 mx-auto right-0 left-0 bg-[#8fdef7] bg-opacity-70 text-black rounded-lg">
-          <h1 className="text-center py-4 text-3xl font-bold">
+    <div className="bg-[#6044ed] h-screen">
+      <div className="">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+          className="absolute mt-32 w-4/12 p-12 mx-auto right-0 left-0 bg-white text-black rounded-lg">
+          <h1 className="text-center py-4 text-5xl font-bold">
             {isSignIn ? "Sign In" : "Sign Up"}
           </h1>
           {!isSignIn && (
             <input
+              ref={name}
               type="text"
               placeholder="Full Name"
               className="w-full rounded-md p-4 my-3 bg-[#FFF6F6]"
             />
           )}
           <input
+            ref={email}
             type="text"
             placeholder="Email"
             className="w-full rounded-md p-4 my-3 bg-[#FFF6F6]"
           />
           <input
+            ref={password}
             type="password"
             placeholder="Passsword"
             className="w-full rounded-md p-4 my-3 bg-[#FFF6F6]"
           />
-          <button className="w-full bg-[#5fc3f5] rounded-md p-4 my-4 hover:bg-[#62bce9]">
+          <p className="text-red-500 text-lg">{errorMessage}</p>
+          <button
+            className="w-full bg-[#1f1f5e] text-xl rounded-md p-4 my-4 hover:bg-[#07072D] text-white"
+            onClick={handleButtonClick}>
             {isSignIn ? "Sign In" : "Sign Up"}
           </button>
           <div>
