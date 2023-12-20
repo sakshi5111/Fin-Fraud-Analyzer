@@ -1,10 +1,12 @@
 import React from "react";
-import Header from "./Header";
+import SideBar from "./SideBar";
 
 const Dashboard = () => {
   return (
     <div>
-      <Header />
+      <div>
+        <SideBar />
+      </div>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { checkValidateData } from "../utils/validate";
+import { bg_url } from "../utils/constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -85,13 +86,16 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-[#6044ed] h-screen">
-      <div className="">
+    <div className="">
+      <div className="absolute">
+        <img className="h-screen w-screen" alt="bg-img" src={bg_url} />
+      </div>
+      <div className="pl-10">
         <form
           onSubmit={(e) => {
             e.preventDefault();
           }}
-          className="absolute mt-32 w-4/12 p-12 mx-auto right-0 left-0 bg-white text-black rounded-lg">
+          className="absolute mt-32 w-4/12 p-12 text-black rounded-lg">
           <h1 className="text-center py-4 text-5xl font-bold">
             {isSignIn ? "Sign In" : "Sign Up"}
           </h1>
@@ -100,24 +104,24 @@ const Login = () => {
               ref={name}
               type="text"
               placeholder="Full Name"
-              className="w-full rounded-md p-4 my-3 bg-[#FFF6F6]"
+              className="w-full rounded-md p-4 my-3 bg-[#FFF6F6] opacity-60 border-solid border-black border-2"
             />
           )}
           <input
             ref={email}
             type="text"
             placeholder="Email"
-            className="w-full rounded-md p-4 my-3 bg-[#FFF6F6]"
+            className="w-full rounded-md p-4 my-3 bg-[#FFF6F6] opacity-60 border-solid border-black border-2"
           />
           <input
             ref={password}
             type="password"
             placeholder="Passsword"
-            className="w-full rounded-md p-4 my-3 bg-[#FFF6F6]"
+            className="w-full rounded-md p-4 my-3 bg-[#FFF6F6] opacity-60 border-solid border-black border-2"
           />
           <p className="text-red-500 text-lg">{errorMessage}</p>
           <button
-            className="w-full bg-[#1f1f5e] text-xl rounded-md p-4 my-4 hover:bg-[#07072D] text-white"
+            className="w-full bg-[#b03131] text-xl rounded-md p-4 my-4 hover:bg-[#07072D] text-white"
             onClick={handleButtonClick}>
             {isSignIn ? "Sign In" : "Sign Up"}
           </button>

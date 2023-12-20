@@ -1,23 +1,15 @@
 import MainContainer from "./MainContainer";
+import { logo_url } from "../utils/constants";
+import SideBarLinks from "./SideBarLinks";
 
 const SideBar = () => {
   return (
     <div className="flex">
-      <div className="bg-[#6044ed] pt-12 w-1/6">
-        <ul className="mx-8 text-2xl font-semibold text-white">
-          <li className="mr-4 my-3 py-6 mt-14 cursor-pointer hover:border-solid hover:border-y-2 hover:border-gray-500 hover:rounded-lg">
-            <i className="fa-solid fa-house px-2"></i>DashBoard
-          </li>
-          <li className="mr-4 my-3 py-6 cursor-pointer hover:border-solid hover:border-y-2 hover:border-gray-500 hover:rounded-lg">
-            <i className="fa-solid fa-upload px-2"></i>Upload
-          </li>
-          <li className="mr-4 my-3 py-6 cursor-pointer hover:border-solid hover:border-y-2 hover:border-gray-500 hover:rounded-lg">
-            <i className="fa-solid fa-filter px-2"></i>Filters
-          </li>
-          <li className="mr-4 my-3 py-6 cursor-pointer hover:border-solid hover:border-y-2 hover:border-gray-500 hover:rounded-lg">
-            <i className="fa-solid fa-right-from-bracket px-2"></i>Sign Out
-          </li>
-        </ul>
+      <div className="">
+        <div className="mt-4 pt-4 pb-8 mb-4 bg-white w-64">
+          <img className="ml-8 w-48 bg-white" src={logo_url} alt="logo" />
+        </div>
+        <SideBarLinks />
       </div>
       <div>
         <MainContainer />
