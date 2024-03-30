@@ -1,13 +1,17 @@
+/* stylelint-disable */
 import MainContainer from "./MainContainer";
-import { logo_url } from "../utils/constants";
 import SideBarLinks from "./SideBarLinks";
 
 const SideBar = () => {
   return (
     <div className="flex">
-      <div className="">
-        <div className="mt-4 pt-4 pb-8 mb-4 bg-white w-64">
-          <img className="ml-8 w-48 bg-white" src={logo_url} alt="logo" />
+      <div className="border-r-4">
+        <div className="mt-4 pt-4 pb-8 mb-4 w-64">
+          <img
+            className="ml-8 w-48"
+            src="https://securseed.com/wp-content/uploads/2023/06/securseed_Color_D-5.png"
+            alt="logo"
+          />
         </div>
         <SideBarLinks />
       </div>
@@ -19,3 +23,5 @@ const SideBar = () => {
 };
 
 export default SideBar;
+
+/* stylelint-enable */

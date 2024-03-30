@@ -32,10 +32,10 @@ const Upload = () => {
         <input
           type="file"
           onChange={handleFileChange}
-          className="py-2 px-4 border border-[#6044ed] rounded-lg"
+          className="py-2 px-4 border border-[#911c1c] rounded-lg"
         />
         <button
-          className="bg-[#6044ed] hover:bg-[#7b64ef] text-white font-bold py-2 px-4 rounded-lg"
+          className="bg-[#911c1c] hover:bg-[#911c1c] text-white font-bold py-2 px-4 rounded-lg"
           onClick={handleGenerateClick}>
           Generate
         </button>

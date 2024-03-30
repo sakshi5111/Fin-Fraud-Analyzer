@@ -21,8 +21,17 @@ const Body = () => {
   ]);
 
   return (
-    <div>
-      <RouterProvider router={appRouter} />
+    <div className="">
+      {/* <img
+        className="w-full h-full object-cover"
+        src="https://securseed.com/wp-content/uploads/2023/06/website-bg2.png?id=7716"
+        alt="bg"
+      /> */}
+      <div className="">
+        <div className="">
+          <RouterProvider router={appRouter} />
+        </div>
+      </div>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { checkValidateData } from "../utils/validate";
 import { bg_url } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -20,6 +21,8 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
     //validate email and password
@@ -51,6 +54,7 @@ const Login = () => {
               dispatch(
                 addUser({ uid: uid, email: email, displayName: displayName })
               );
+              navigate("/dashboard");
             })
             .catch((error) => {
               // An error occurred
@@ -72,6 +76,7 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
+          navigate("/dashboard");
         })
         .catch((error) => {
           const errorCode = error.code;
