@@ -124,6 +124,17 @@ const Login = () => {
             placeholder="Passsword"
             className="w-full rounded-md p-4 my-3 bg-[#FFF6F6] opacity-60 border-solid border-black border-2"
           />
+          <div>
+            <div className="text-xs text-gray-700">
+              Password must have
+              <ul className="list-disc pl-3">
+                <li>a minimum of 1 lower case letter</li>
+                <li>a minimum of 1 upper case letter </li>
+                <li>a minimum of 1 numeric character </li>
+                <li>a minimum of 1 special characte</li>
+              </ul>
+            </div>
+          </div>
           <p className="text-red-500 text-lg">{errorMessage}</p>
           <button
             className="w-full bg-[#b03131] text-xl rounded-md p-4 my-4 hover:bg-[#07072D] text-white"

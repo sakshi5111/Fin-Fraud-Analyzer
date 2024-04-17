@@ -2,17 +2,23 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
   name: "user",
-  initialState: null,
+  initialState: {
+    currentUser: null,
+    isMenuOpen: true,
+  },
   reducers: {
     addUser(state, action) {
-      return action.payload;
+      state.currentUser = action.payload;
     },
     removeUser(state, action) {
-      return null;
+      state.currentUser = null;
+    },
+    toggleMenu: (state) => {
+      state.isMenuOpen = !state.isMenuOpen;
     },
   },
 });
 
-export const { addUser, removeUser } = userSlice.actions;
+export const { addUser, removeUser, toggleMenu } = userSlice.actions;
 
 export default userSlice.reducer;

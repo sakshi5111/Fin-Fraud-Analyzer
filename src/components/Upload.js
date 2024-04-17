@@ -3,15 +3,27 @@ import React, { useState } from "react";
 const Upload = () => {
   const [file, setFile] = useState(null);
   const [rows, setRows] = useState([]);
+  const [imageToShow, setImageToShow] = useState(null);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
+    setImageToShow(null);
   };
 
   const handleGenerateClick = () => {
     if (!file) {
-      alert("Please upload a file first.");
+      // Set the image to show when file is not uploaded
+      setImageToShow(
+        <div className="flex flex-col items-center justify-center">
+          <img
+            className="h-1/4 w-1/3 align-middle"
+            alt="file-not-found"
+            src="https://as2.ftcdn.net/v2/jpg/01/74/27/71/1000_F_174277119_Jfcg8AV4OK5TytkHn2IVmOFGlVefNaLX.jpg"
+          />
+          <h1 className="text-xl font-bold">Please Upload the file first..</h1>
+        </div>
+      );
       return;
     }
 
@@ -19,7 +31,7 @@ const Upload = () => {
 
     reader.onload = (e) => {
       const content = e.target.result;
-      const rows = content.split("\n").slice(0, 5);
+      const rows = content.split("\n").slice(0, 8);
       setRows(rows);
     };
 
@@ -27,7 +39,10 @@ const Upload = () => {
   };
 
   return (
-    <div className="m-20 p-20">
+    <div className="mx-10 p-10">
+      <h1 className="text-5xl py-5 mb-5 font-semibold">
+        Upload Your File here...
+      </h1>
       <div className="flex gap-4">
         <input
           type="file"
@@ -40,6 +55,8 @@ const Upload = () => {
           Generate
         </button>
       </div>
+      {/* Conditionally render the image */}
+      {imageToShow && <div>{imageToShow}</div>}
       <div>
         <table className="table-auto w-full mt-2 rounded-md">
           <tbody>

@@ -1,35 +1,29 @@
 import React from "react";
-import Login from "./Login";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Dashboard from "./Dashboard";
+import SideBar from "./SideBar";
+import Header from "./Header";
+import MainContainer from "./MainContainer";
 import Upload from "./Upload";
+import User from "./User";
+import Filters from "./Filters";
+import { Route, Routes } from "react-router-dom";
+import Dashboard from "./Dashboard";
 
 const Body = () => {
-  const appRouter = createBrowserRouter([
-    {
-      path: "/",
-      element: <Login />,
-    },
-    {
-      path: "/dashboard",
-      element: <Dashboard />,
-    },
-    {
-      path: "/upload",
-      element: <Upload />,
-    },
-  ]);
-
   return (
-    <div className="">
-      {/* <img
-        className="w-full h-full object-cover"
-        src="https://securseed.com/wp-content/uploads/2023/06/website-bg2.png?id=7716"
-        alt="bg"
-      /> */}
-      <div className="">
-        <div className="">
-          <RouterProvider router={appRouter} />
+    // <Router>
+    <div>
+      <div>
+        <Header />
+        <div className="flex">
+          <SideBar />
+          <MainContainer>
+            <Routes>
+              <Route path="charts" element={<Dashboard />} />
+              <Route path="upload" element={<Upload />} />
+              <Route path="user" element={<User />} />
+              <Route path="filters" element={<Filters />} />
+            </Routes>
+          </MainContainer>
         </div>
       </div>
     </div>
