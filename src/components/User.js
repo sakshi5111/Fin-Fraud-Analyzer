@@ -15,11 +15,11 @@ const User = () => {
   };
 
   return (
-    <div className="mx-20 my-16 p-10">
-      <div className="flex m-2 p-2">
+    <div className="md:mx-20 md:my-16 p-10 w-full">
+      <div className="md:flex md:m-2 p-2">
         <div>
           <img
-            className="h-72"
+            className="md:h-72"
             alt="user"
             src="https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg"
           />
@@ -57,13 +57,13 @@ const User = () => {
           )}
           {editing ? (
             <button
-              className="bg-[#911c1c] hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-4 mr-4"
+              className="bg-[#911c1c] hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-4  mx-auto block md:inline-block"
               onClick={handleSaveClick}>
               Save
             </button>
           ) : (
             <button
-              className="bg-[#911c1c] hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-4 mr-4"
+              className="bg-[#911c1c] hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-4  mx-auto block md:inline-block"
               onClick={handleEditClick}>
               Edit
             </button>

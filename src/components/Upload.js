@@ -39,25 +39,25 @@ const Upload = () => {
   };
 
   return (
-    <div className="mx-10 p-10">
-      <h1 className="text-5xl py-5 mb-5 font-semibold">
+    <div className="md:mx-10 p-10">
+      <h1 className="md:text-5xl text-4xl py-5 mb-5 font-semibold">
         Upload Your File here...
       </h1>
-      <div className="flex gap-4">
+      <div className="md:flex gap-4">
         <input
           type="file"
           onChange={handleFileChange}
-          className="py-2 px-4 border border-[#911c1c] rounded-lg"
+          className="my-4 md:my-0 py-2 px-4 border border-[#911c1c] rounded-lg"
         />
         <button
-          className="bg-[#911c1c] hover:bg-[#911c1c] text-white font-bold py-2 px-4 rounded-lg"
+          className="bg-[#911c1c] hover:bg-[#911c1c] text-white font-bold py-2 px-4 rounded-lg mx-auto md:mx-0 block md:inline-block"
           onClick={handleGenerateClick}>
           Generate
         </button>
       </div>
       {/* Conditionally render the image */}
       {imageToShow && <div>{imageToShow}</div>}
-      <div>
+      <div className="overflow-x-auto">
         <table className="table-auto w-full mt-2 rounded-md">
           <tbody>
             {rows.map((row, rowIndex) => (

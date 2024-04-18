@@ -44,11 +44,11 @@ const SideBar = () => {
 
   return (
     <div>
-      <div className="mt-10 shadow-lg h-full">
-        <ul className="px-8 text-2xl cursor-pointer font-semibold">
+      <div className="mt-10 w-full shadow-lg  md:h-full md:relative bg-white absolute">
+        <ul className="px-8 text-2xl cursor-pointer font-semibold ">
           <div>
             <img
-              className="h-36 px-5 mt-6"
+              className="md:h-36 h-40 md:px-5 mt-2 md:mt-6 mx-auto"
               alt="user-icon"
               src="https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg"
             />
@@ -57,6 +57,7 @@ const SideBar = () => {
             className="flex py-4 rounded-lg px-2 my-4"
             style={{
               backgroundColor: backgroundColor === "dashboard" ? "#911c1c" : "",
+              color: backgroundColor === "dashboard" ? "#ffffff" : "#000000",
             }}
             onClick={() => setBackgroundColor("dashboard")}>
             <i className="fa-solid fa-house px-2 mt-1"></i>
@@ -68,6 +69,7 @@ const SideBar = () => {
             className="flex py-4 rounded-lg px-2 my-4"
             style={{
               backgroundColor: backgroundColor === "upload" ? "#911c1c" : "",
+              color: backgroundColor === "upload" ? "#ffffff" : "#000000",
             }}
             onClick={() => setBackgroundColor("upload")}>
             <i className="fa-solid fa-upload px-2 mt-1"></i>
@@ -79,6 +81,7 @@ const SideBar = () => {
             className="flex py-4 rounded-lg px-2 my-4"
             style={{
               backgroundColor: backgroundColor === "filters" ? "#911c1c" : "",
+              color: backgroundColor === "filters" ? "#ffffff" : "#000000",
             }}
             onClick={() => setBackgroundColor("filters")}>
             <i className="fa-solid fa-filter px-2 mt-1"></i>
@@ -90,6 +93,7 @@ const SideBar = () => {
             className="flex py-4 rounded-lg px-2 my-4"
             style={{
               backgroundColor: backgroundColor === "user" ? "#911c1c" : "",
+              color: backgroundColor === "user" ? "#ffffff" : "#000000",
             }}
             onClick={() => setBackgroundColor("user")}>
             <i className="fa-solid fa-user px-2 mt-1"></i>
@@ -101,6 +105,7 @@ const SideBar = () => {
             className="flex py-4 rounded-lg px-2 my-4"
             style={{
               backgroundColor: backgroundColor === "signout" ? "#911c1c" : "",
+              color: backgroundColor === "signout" ? "#ffffff" : "#000000",
             }}
             onClick={() => {
               setBackgroundColor("signout");

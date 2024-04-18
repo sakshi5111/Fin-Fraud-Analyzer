@@ -31,7 +31,9 @@ const Filters = () => {
   };
   return (
     <div className="mx-10 p-10">
-      <h1 className="text-5xl py-5 mb-5 font-semibold">Apply the Filters</h1>
+      <h1 className="text-4xl md:text-5xl py-5 mb-5 font-semibold">
+        Apply the Filters
+      </h1>
 
       <button
         style={{ float: "right" }}
